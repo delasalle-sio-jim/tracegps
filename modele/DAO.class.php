@@ -331,7 +331,8 @@ class DAO
     // Afin de limiter les conflits avec GitHub, il est décidé d'attribuer une zone de ce fichier à chaque développeur.
     // Développeur 1 : lignes 350 à 549
     // Développeur 2 : lignes 550 à 749
-    // Développeur 3 : lignes 750 à 950
+    // Développeur 3 : lignes 750 à 949
+    // Développeur 4 : lignes 950 à 1150
     
     // Quelques conseils pour le travail collaboratif :
     // avant d'attaquer un cycle de développement (début de séance, nouvelle méthode, ...), faites un Pull pour récupérer 

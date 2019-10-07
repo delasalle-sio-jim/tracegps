@@ -9,7 +9,7 @@
 // __construct() : le constructeur crée la connexion $cnx à la base de données
 // __destruct() : le destructeur ferme la connexion $cnx à la base de données
 // getNiveauConnexion($login, $mdp) : fournit le niveau (0, 1 ou 2) d'un utilisateur identifié par $login et $mdp
-// function existePseudoUtilisateur($pseudo) : fournit true si le pseudo $pseudo existe dans la table tracegps_utilisateurs, false sinon
+// existePseudoUtilisateur($pseudo) : fournit true si le pseudo $pseudo existe dans la table tracegps_utilisateurs, false sinon
 // getUnUtilisateur($login) : fournit un objet Utilisateur à partir de $login (son pseudo ou son adresse mail)
 // getTousLesUtilisateurs() : fournit la collection de tous les utilisateurs (de niveau 1)
 // creerUnUtilisateur($unUtilisateur) : enregistre l'utilisateur $unUtilisateur dans la bdd

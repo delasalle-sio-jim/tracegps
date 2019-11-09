@@ -1,7 +1,7 @@
 <?php
 // Projet TraceGPS - services web
 // fichier : api/services/Connecter.php
-// Dernière mise à jour : 3/7/2018 par Jim
+// Dernière mise à jour : 9/11/2019 par Jim
 
 // Rôle : ce service permet à un utilisateur de s'authentifier
 // Le service web doit recevoir 3 paramètres :

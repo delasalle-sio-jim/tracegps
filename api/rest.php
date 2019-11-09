@@ -2,7 +2,7 @@
 // Projet TraceGPS - services web
 // Fichier : api/rest.php
 // La classe Rest est la classe mère de la classe Api (fichier api/api.php)
-// Dernière mise à jour : 31/10/2019 par Jim
+// Dernière mise à jour : 9/11/2019 par Jim
 
 class Rest {
     protected $codeReponse;        // statut de la réponse HTTP (code numérique à 3 chiffres)

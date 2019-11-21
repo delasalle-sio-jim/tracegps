@@ -142,7 +142,7 @@ function creerFluxXML($msg, $unPoint)
          </donnees>
      </data>
      */
-    
+     
     // crée une instance de DOMdocument (DOM : Document Object Model)
 	$doc = new DOMDocument();	
 

@@ -1,7 +1,7 @@
 <?php
 // Projet TraceGPS - services web
 // fichier :  api/services/EnvoyerPosition.php
-// Dernière mise à jour : 3/7/2019 par Jim
+// Dernière mise à jour : 2/1/2020 par Jim
 
 // Rôle : ce service permet à un utilisateur authentifié d'envoyer sa position
 // Le service web doit recevoir 9 paramètres :
@@ -31,7 +31,7 @@ $dateHeure = ( empty($this->request['dateHeure'])) ? "" : $this->request['dateHe
 $latitude = ( empty($this->request['latitude'])) ? "" : $this->request['latitude'];
 $longitude = ( empty($this->request['longitude'])) ? "" : $this->request['longitude'];
 $altitude = ( empty($this->request['altitude'])) ? "" : $this->request['altitude'];
-$rythmeCardio = ( empty($this->request['rythmeCardio'])) ? "" : $this->request['rythmeCardio'];
+$rythmeCardio = ( empty($this->request['rythmeCardio'])) ? "0" : $this->request['rythmeCardio'];
 $lang = ( empty($this->request['lang'])) ? "" : $this->request['lang'];
 
 // "xml" par défaut si le paramètre lang est absent ou incorrect
@@ -51,14 +51,14 @@ else {
     {	$msg = "Erreur : données incomplètes.";
         $code_reponse = 400;
     
-    //     $msg .= "pseudo=" . $pseudo;
-    //     $msg .= "mdpSha1=" . $mdpSha1;
-    //     $msg .= "idTrace=" . $idTrace;
-    //     $msg .= "dateHeure=" . $dateHeure;
-    //     $msg .= "latitude=" . $latitude;
-    //     $msg .= "longitude=" . $longitude;
-    //     $msg .= "altitude=" . $altitude;
-    //     $msg .= "rythmeCardio=" . $rythmeCardio;
+//         $msg .= "pseudo=" . $pseudo;
+//         $msg .= "mdpSha1=" . $mdpSha1;
+//         $msg .= "idTrace=" . $idTrace;
+//         $msg .= "dateHeure=" . $dateHeure;
+//         $msg .= "latitude=" . $latitude;
+//         $msg .= "longitude=" . $longitude;
+//         $msg .= "altitude=" . $altitude;
+//         $msg .= "rythmeCardio=" . $rythmeCardio;
     }
     else
     {	if ( $dao->getNiveauConnexion($pseudo, $mdpSha1) == 0 )

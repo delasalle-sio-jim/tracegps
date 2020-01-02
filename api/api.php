@@ -111,7 +111,7 @@ class Api extends Rest
     
     // Ce service permet à un utilisateur d'obtenir le détail d'un de ses parcours ou d'un parcours d'un membre qui l'autorise
     private function getunparcoursetsespoints()
-    {   include_once ("services/getunparcoursetsespoints.php");
+    {   include_once ("services/GetUnParcoursEtSesPoints.php");
     }
     
     // Ce service permet à un utilisateur de supprimer une autorisation qu'il avait accordée à un autre utilisateur

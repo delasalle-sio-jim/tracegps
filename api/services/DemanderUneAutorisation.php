@@ -1,7 +1,7 @@
 <?php
 // Projet TraceGPS - services web
 // fichier : api/services/DemanderUneAutorisation.php
-// Dernière mise à jour : 3/7/2019 par Jim
+// Dernière mise à jour : 28/3/2020 par Jim
 
 // Rôle : ce service permet à un utilisateur de demander une autorisation à un autre utilisateur
 // Le service web doit recevoir 6 paramètres :
@@ -71,11 +71,11 @@ else {
                 $contenuMail .= "Son message : " . $texteMessage . "\n\n";
                 
                 $contenuMail .= "Pour accepter la demande, cliquez sur ce lien :\n";
-                $contenuMail .= $ADR_SERVICE_WEB . "ValiderDemandeAutorisation.php?a=" . $utilisateurDestinataire->getMdpSha1();
+                $contenuMail .= $ADR_SERVICE_WEB . "ValiderDemandeAutorisation?a=" . $utilisateurDestinataire->getMdpSha1();
                 $contenuMail .= "&b=" . $utilisateurDestinataire->getPseudo() . "&c=" . $utilisateurDemandeur->getPseudo() . "&d=1";
                 $contenuMail .= "\n\n";
                 $contenuMail .= "Pour rejeter la demande, cliquez sur ce lien :\n";
-                $contenuMail .= $ADR_SERVICE_WEB . "ValiderDemandeAutorisation.php?a=" . $utilisateurDestinataire->getMdpSha1();
+                $contenuMail .= $ADR_SERVICE_WEB . "ValiderDemandeAutorisation?a=" . $utilisateurDestinataire->getMdpSha1();
                 $contenuMail .= "&b=" . $utilisateurDestinataire->getPseudo() . "&c=" . $utilisateurDemandeur->getPseudo() . "&d=0";
             
                 $ok = Outils::envoyerMail($adrMail, $sujetMail, $contenuMail, $ADR_MAIL_EMETTEUR);

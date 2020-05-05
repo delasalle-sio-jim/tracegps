@@ -2,7 +2,7 @@
 // Projet TraceGPS - version web mobile
 // fichier : modele/parametres.localhost.php
 // Rôle : inclure les paramètres de l'application (hébergement en localhost)
-// Dernière mise à jour : 15/8/2018 par JM CARTRON
+// Dernière mise à jour : 2/5/2020 par JM CARTRON
 
 // paramètres de connexion -----------------------------------------------------------------------------------
 global $PARAM_HOTE, $PARAM_PORT, $PARAM_BDD, $PARAM_USER, $PARAM_PWD;
@@ -30,9 +30,9 @@ $FREQUENCE_AFFICHAGE = 60;			// 60 sec ou 1 mn
 // adresse de l'émetteur lors d'un envoi de courriel
 $ADR_MAIL_EMETTEUR = "delasalle.sio.crib@gmail.com";
 
-// adresse du service web en localhost -----------------------------------------------------------------------
+// adresse de l'API web en localhost -----------------------------------------------------------------------
 $ADR_SERVICE_WEB = "http://localhost/ws-php-cartron/tracegps/api/";
-// adresse du service web chez OVH ---------------------------------------------------------------------------
+// adresse de l'API web chez OVH ---------------------------------------------------------------------------
 //$ADR_SERVICE_WEB = "http://sio.lyceedelasalle.fr/tracegps/api/";
 
 // ATTENTION : on ne met pas de balise de fin de script pour ne pas prendre le risque

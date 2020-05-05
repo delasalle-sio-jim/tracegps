@@ -35,7 +35,7 @@ else {
             include_once ('vues/VueChangerDeMdp.php');
         }
         else {
-            if ( strlen($nouveauMdp) < 3 ) {
+            if ( strlen($nouveauMdp) < 8 ) {
                 // si le mot de passe a moins de 8 caractères, réaffichage de la vue avec un message explicatif
                 $message = 'Le mot de passe doit comporter au moins 8 caractères !';
                 $typeMessage = 'avertissement';

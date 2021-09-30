@@ -1,7 +1,7 @@
 <?php
 // Projet TraceGPS - services web
 // fichier :  api/services/EnvoyerPosition.php
-// Dernière mise à jour : 2/1/2020 par Jim
+// Dernière mise à jour : 25/1/2021 par Jim
 
 // Rôle : ce service permet à un utilisateur authentifié d'envoyer sa position
 // Le service web doit recevoir 9 paramètres :
@@ -17,8 +17,9 @@
 // Le service retourne un flux de données XML ou JSON contenant un compte-rendu d'exécution (avec l'id du point créé)
 
 // Les paramètres doivent être passés par la méthode GET :
-//     http://<hébergeur>/tracegps/api/EnvoyerPosition?pseudo=europa&mdp=13e3668bbee30b004380052b086457b014504b3e
-//        &idTrace=3&dateHeure=2018-01-19 13:10:28&latitude=48.2159&longitude=-1.5485&altitude=110&rythmeCardio=86&lang=xml
+//     http://<hébergeur>/tracegps/api/EnvoyerPosition?pseudo=europa&mdp=13e3668bbee30b004380052b086457b014504b3e&idTrace=3&dateHeure=2018-01-19 13:10:28&latitude=48.2159&longitude=-1.5485&altitude=110&rythmeCardio=86&lang=xml
+//     http://sio.lyceedelasalle.fr/tracegps/api/EnvoyerPosition?pseudo=europa&mdp=13e3668bbee30b004380052b086457b014504b3e&idTrace=3&dateHeure=2018-01-19 13:10:28&latitude=48.2159&longitude=-1.5485&altitude=110&rythmeCardio=86&lang=xml
+//     http://localhost/ws-php-cartron/tracegps/api/EnvoyerPosition?pseudo=europa&mdp=13e3668bbee30b004380052b086457b014504b3e&idTrace=3&dateHeure=2018-01-19 13:10:28&latitude=48.2159&longitude=-1.5485&altitude=110&rythmeCardio=86&lang=xml
 
 // connexion du serveur web à la base MySQL
 $dao = new DAO();
@@ -86,22 +87,36 @@ else {
                         $code_reponse = 400;
                     }
                     else
-                    {   // calcul du numéro du point
-                        $idPoint = $laTrace->getNombrePoints() + 1;
-                        // création du point
-                        $tempsCumule = 0;
-                        $distanceCumulee = 0;
-                        $vitesse = 0;
-                        $unPoint = new PointDeTrace($idTrace, $idPoint, $latitude, $longitude, $altitude, $dateHeure, $rythmeCardio, $tempsCumule, $distanceCumulee, $vitesse);
-                        // enregistrement du point
-                        $ok = $dao->creerUnPointDeTrace($unPoint);
-                        if (! $ok)
-                        {   $msg = "Erreur : problème lors de l'enregistrement du point.";
-                            $code_reponse = 500;
+                    {   $dernierPoint = null;
+                        if ($laTrace->getNombrePoints() > 0)
+                        {
+                            $dernierPoint = $laTrace->getLesPointsDeTrace()[$laTrace->getNombrePoints() - 1];
+                        }
+                        // tester si le dernier point et le nouveau ont la même heure
+                        if ($dernierPoint != null && $dernierPoint->getDateHeure() == $dateHeure)
+                        {
+                            $unPoint = $dernierPoint;
+                            $msg = "Point déjà créé.";
+                            $code_reponse = 200;
                         }
                         else 
-                        {   $msg = "Point créé.";
-                            $code_reponse = 200;
+                        {   // calcul du numéro du point
+                            $idPoint = $laTrace->getNombrePoints() + 1;
+                            // création du point
+                            $tempsCumule = 0;
+                            $distanceCumulee = 0;
+                            $vitesse = 0;
+                            $unPoint = new PointDeTrace($idTrace, $idPoint, $latitude, $longitude, $altitude, $dateHeure, $rythmeCardio, $tempsCumule, $distanceCumulee, $vitesse);
+                            // enregistrement du point
+                            $ok = $dao->creerUnPointDeTrace($unPoint);
+                            if (! $ok)
+                            {   $msg = "Erreur : problème lors de l'enregistrement du point.";
+                                $code_reponse = 500;
+                            }
+                            else
+                            {   $msg = "Point créé.";
+                                $code_reponse = 200;
+                            }
                         }
                     }
                 }
@@ -142,7 +157,7 @@ function creerFluxXML($msg, $unPoint)
          </donnees>
      </data>
      */
-     
+    
     // crée une instance de DOMdocument (DOM : Document Object Model)
 	$doc = new DOMDocument();	
 

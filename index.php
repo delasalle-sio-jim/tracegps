@@ -2,7 +2,7 @@
 // Projet TraceGPS - version web mobile - avec gestion des jetons d'authentification
 // fichier : index.php
 // Rôle : analyser toutes les demandes (appels de page ou traitements de formulaires) et activer le contrôleur chargé de traiter l'action demandée
-// Dernière mise à jour : 20/1/2018 par JM CARTRON
+// Dernière mise à jour : 30/9/2021 par JM CARTRON
 
 // Ce fichier est appelé par tous les liens internes, et par la validation de tous les formulaires
 // il est appelé avec un paramètre action qui peut prendre les valeurs suivantes :
